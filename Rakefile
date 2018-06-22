@@ -11,3 +11,22 @@ namespace :greeting do
   end
 
 end
+
+namespace :db do
+
+  desc 'migrate changes to your database'
+  task :migrate => :environment do
+    Student.create_table
+  end
+
+  desc 'seed the database with some data'
+  task :seed do
+    require_relative './db/seeds.rb'
+  end
+
+  desc 'drop into the Pry console'
+  task :console => :environemnt do 
+    Pry.start
+  end
+  
+end
